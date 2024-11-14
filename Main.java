@@ -31,7 +31,7 @@ public class Main {
                     System.out.println("Enter Student Email:");
                     String studentEmail = scanner.nextLine();
 
-                    Student student = new Student(studentId, studentName, studentEmail);
+                    Student student = new Student(studentId, studentName, studentEmail,YearInput);
                     system.addStudent(student);
                     int selectedElectives=0;
 
@@ -53,8 +53,10 @@ public class Main {
 
                         System.out.println("\nSelect elective courses by entering the course name:");
                         String courseChoice;
+                        System.out.println("You have to select "+selectedBranch.getRequiredElectives()+"Courses");
                         while(selectedElectives < selectedBranch.getRequiredElectives())
                             {
+                                System.out.println("Select"+(selectedElectives+1)+"th Course:");
                                 courseChoice = scanner.nextLine();
                                 if (system.enrollInElectiveCourse(student, courseChoice))
                                 {
@@ -68,6 +70,7 @@ public class Main {
 
                             }
                             System.out.println("Student registration complete!");
+                            system.saveRegistrationData(student);
                         }
                     else
                     {

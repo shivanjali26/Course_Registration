@@ -1,14 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student extends User
+public class Student extends User implements Registrable
 {
-    private List<Course> registeredCourses;
+    private final List<Course> registeredCourses;
     private Branch branch;
-    public Student(String Id,String Name,String Email)
+    private final String year;
+    public Student(String Id,String Name,String Email,String year)
     {
         super(Id,Name,Email);
+        this.year=year;
         this.registeredCourses = new ArrayList<>();
+    }
+    public String getYear() {
+        return year;
     }
     public void chooseBranch(Branch branch)
     {
@@ -20,7 +25,8 @@ public class Student extends User
     {
         return branch;
     }
-    private void registerCompulsoryCourses(List<Course> compulsoryCourses)
+    @Override
+    public void registerCompulsoryCourses(List<Course> compulsoryCourses)
     {
         for(Course course : compulsoryCourses)
         {
@@ -30,7 +36,7 @@ public class Student extends User
             }
         }
     }
-
+    @Override
     public boolean registerForElectiveCourse(Course course)
     {
         if(branch!=null && branch.getElectiveCourses().contains(course) && !registeredCourses.contains(course))
@@ -40,10 +46,15 @@ public class Student extends User
         }
         return false;
     }
+    @Override
+    public List<Course> getRegisteredCourses()
+    {
+        return registeredCourses;
+    }
 
     public void showInfo()
     {
-        System.out.println("Student ID:"+Id+",Name: "+Name+",Email: "+Email);
+        System.out.println("Student ID:"+ getId() +",Name: "+ getName() +",Email: "+ getEmail());
         System.out.println("Branch: " + (branch != null ? branch.getBranchName() : "Not Selected"));
         System.out.println("Registered Courses:");
         for(Course course : registeredCourses)
@@ -52,5 +63,4 @@ public class Student extends User
         }
 
     }
-
 }

@@ -1,15 +1,13 @@
 public class Course
 {
-    private String courseId;
-    private String courseName;
-    private static Branch branch;
-    private int credits;
+    private final String courseId;
+    private final String courseName;
+    private final int credits;
 
     public Course(String courseId,String courseName,int credits,Branch branch)
     {
         this.courseId=courseId;
         this.courseName=courseName;
-        this.branch =branch;
         this.credits=credits;
     }
     public String getCourseName()
@@ -24,4 +22,11 @@ public class Course
         System.out.println();
     }
 
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
 }

@@ -1,8 +1,8 @@
-public class User
+public abstract class User
 {
-    String Name;
-    String Email;
-    String Id;
+    private final String Name;
+    private final String Email;
+    private final String Id;
 
     User(String Id,String Name,String Email)
     {
@@ -14,12 +14,13 @@ public class User
     {
         return Id;
     }
-//    public String getName()
-//    {
-//        return Name;
-//    }
-//    public String getEmail()
-//    {
-//        return Email;
-//    }
+    public String getName()
+    {
+        return Name;
+    }
+    public String getEmail()
+    {
+        return Email;
+    }
+    public abstract void showInfo();
 }

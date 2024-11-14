@@ -8,8 +8,6 @@ public class Branch
     private List<Course> electiveCourses;
     private int requiredElectives;
 
-
-
     public Branch(String branchName,int requiredElectives)
     {
         this.branchName=branchName;
@@ -17,7 +15,6 @@ public class Branch
         this.electiveCourses=new ArrayList<>();
         this.requiredElectives=requiredElectives;
     }
-
     public String getBranchName()
     {
         return branchName;
@@ -42,4 +39,5 @@ public class Branch
     {
         return electiveCourses;
     }
+
 }
